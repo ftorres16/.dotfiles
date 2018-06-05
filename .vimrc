@@ -17,6 +17,9 @@ Plug 'https://github.com/w0rp/ale.git'
 Plug 'scrooloose/nerdtree'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'https://github.com/elzr/vim-json'
+Plug 'yuttie/comfortable-motion.vim'
+Plug 'christoomey/vim-tmux-navigator'
 call plug#end()
 
 " Ale
@@ -38,6 +41,15 @@ highlight clear SignColumn
 
 " Fix backspace
 set backspace=indent,eol,start
+
+" Enable mouse
+set mouse=a
+if !has('nvim')
+    set ttymouse=xterm2
+endif
+
+" Share clipboard with OS, it can destroy your normal yank, wtf!
+set clipboard=unnamed
 
 " " -- Visuals --
 set statusline=%=%f%m\ %P\|%c\ %{ALEGetStatusLine()}
