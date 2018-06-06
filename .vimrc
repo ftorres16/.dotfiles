@@ -1,6 +1,3 @@
-syntax on
-set background=dark
-set number
 
 filetype indent plugin on
 
@@ -33,6 +30,13 @@ let g:ale_sign_error = '•'
 let g:ale_sign_warning = '•'
 hi link ALEErrorSign    GruvboxRed
 hi link ALEWarningSign  GruvboxYellow
+
+set splitbelow "donde aparecen los nuevos splits
+set splitright "donde aparecen los nuevos splits
+set diffopt+=vertical
+syntax on
+set background=dark
+set number
 
 " " For ALE linter plugin
 highlight clear ALEErrorSign
