@@ -37,6 +37,7 @@ set diffopt+=vertical
 syntax on
 set background=dark
 set number
+set hlsearch
 
 " " For ALE linter plugin
 highlight clear ALEErrorSign
