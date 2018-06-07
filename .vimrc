@@ -10,14 +10,26 @@ endif
 
 call plug#begin('~/.vim/plugged')
 Plug 'maralla/completor.vim'
-Plug 'https://github.com/w0rp/ale.git'
-Plug 'scrooloose/nerdtree'
+Plug 'morhetz/gruvbox'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'https://github.com/w0rp/ale.git'
 Plug 'https://github.com/elzr/vim-json'
+Plug 'airblade/vim-gitgutter'
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'yuttie/comfortable-motion.vim'
+Plug 'https://github.com/noahfrederick/vim-noctu'
 Plug 'christoomey/vim-tmux-navigator'
 call plug#end()
+"============================================================================
+
+" ======================= Plug In Configs ===================================
+
+
+" Git Gutter
+set updatetime=250  " Vim update time, defaults to 4000ms
+let g:gitgutter_override_sign_column_highlight = 1
 
 " Ale
 let g:ale_set_highlights = 0  " Dont underline errors/warnings
@@ -57,4 +69,11 @@ endif
 set clipboard=unnamed
 
 " " -- Visuals --
+let g:gruvbox_termcolors = 16
+colorscheme gruvbox
+set background=dark
+hi Normal ctermbg=0
+hi StatusLine ctermbg=red ctermfg=black
+set laststatus=2
+set noshowmode
 set statusline=%=%f%m\ %P\|%c\ %{ALEGetStatusLine()}
