@@ -9,18 +9,20 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
-Plug 'maralla/completor.vim'
-Plug 'morhetz/gruvbox'
+Plug 'airblade/vim-gitgutter'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'https://github.com/elzr/vim-json'
+Plug 'https://github.com/noahfrederick/vim-noctu'
+Plug 'https://github.com/tpope/vim-fugitive.git'
+Plug 'https://github.com/w0rp/ale.git'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'https://github.com/w0rp/ale.git'
-Plug 'https://github.com/elzr/vim-json'
-Plug 'airblade/vim-gitgutter'
+Plug 'maralla/completor.vim'
+Plug 'morhetz/gruvbox'
 Plug 'scrooloose/nerdtree'
+Plug 'sheerun/vim-polyglot'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'yuttie/comfortable-motion.vim'
-Plug 'https://github.com/noahfrederick/vim-noctu'
-Plug 'christoomey/vim-tmux-navigator'
 call plug#end()
 "============================================================================
 
@@ -42,6 +44,9 @@ let g:ale_sign_error = '•'
 let g:ale_sign_warning = '•'
 hi link ALEErrorSign    GruvboxRed
 hi link ALEWarningSign  GruvboxYellow
+
+" Polyglot
+let g:python_highlight_space_errors = 0
 
 set splitbelow "donde aparecen los nuevos splits
 set splitright "donde aparecen los nuevos splits
