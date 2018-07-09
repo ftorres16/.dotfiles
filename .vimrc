@@ -51,10 +51,39 @@ let g:python_highlight_space_errors = 0
 set splitbelow "donde aparecen los nuevos splits
 set splitright "donde aparecen los nuevos splits
 set diffopt+=vertical
-syntax on
 set background=dark
 set number
 set hlsearch
+
+" Syntax
+syntax on
+
+au FileType c setlocal
+	\ tabstop=4
+	\ softtabstop=4
+	\ shiftwidth=4
+	\ noexpandtab
+
+au FileType verilog setlocal
+	\ tabstop=2
+	\ softtabstop=2
+	\ shiftwidth=2
+	\ noexpandtab
+
+au FileType python setlocal
+	\ tabstop=8
+	\ softtabstop=4
+	\ shiftwidth=4
+	\ expandtab
+	\ autoindent
+	\ fileformat=unix
+	\ foldmethod=indent
+
+au BufNewFile,BufRead *.js,*.html,*.css
+    \ set tabstop=2 |
+    \ set softtabstop=2 |
+    \ set shiftwidth=2 |
+
 
 " " For ALE linter plugin
 highlight clear ALEErrorSign
