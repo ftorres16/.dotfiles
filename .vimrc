@@ -73,6 +73,37 @@ endif
 " Share clipboard with OS, it can destroy your normal yank, wtf!
 set clipboard=unnamed
 
+" ======= FZF =============
+nnoremap <C-b> :Buffers<CR>
+nnoremap <C-f> :GGrep<CR>
+nnoremap <C-g>a :Ag<CR>
+nnoremap <C-g>c :Commands<CR>
+nnoremap <C-g>h :History:<CR>
+nnoremap <C-g>l :BLines<CR>
+nnoremap <C-g>g :GFiles<CR>
+nnoremap <C-p> :Files<CR>
+
+command! -bang -nargs=* Ag
+  \ call fzf#vim#ag(<q-args>,
+  \                 <bang>0 ? fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'up:60%')
+  \                         : fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'right:50%'),
+  \                 <bang>0)
+
+command! -bang -nargs=? -complete=dir Files
+  \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+
+command! -bang -nargs=* GGrep
+  \ call fzf#vim#grep(
+  \   'git grep --line-number '.shellescape(<q-args>), 0,
+  \   <bang>0 ? fzf#vim#with_preview({'options': '--no-hscroll --delimiter : --nth 3..'}, 'up:60%')
+  \           : fzf#vim#with_preview({'options': '--no-hscroll --delimiter : --nth 3..'}, 'right:50%'),
+  \   <bang>0)
+" ==========================
+
+" ======= Utilities =============
+" Search selected text
+vnoremap // y/\V<C-r>=escape(@",'/\')<CR><CR>
+" ==========================
 " " -- Visuals --
 let g:gruvbox_termcolors = 16
 colorscheme gruvbox
