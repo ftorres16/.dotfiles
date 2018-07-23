@@ -44,6 +44,7 @@ let g:ale_sign_error = '•'
 let g:ale_sign_warning = '•'
 hi link ALEErrorSign    GruvboxRed
 hi link ALEWarningSign  GruvboxYellow
+let g:ale_linters = {'python': ['flake8']}
 
 " Polyglot
 let g:python_highlight_space_errors = 0
@@ -54,6 +55,10 @@ set diffopt+=vertical
 set background=dark
 set number
 set hlsearch
+set nofoldenable
+"case insensitive search
+set ignorecase
+set smartcase
 
 " Syntax
 syntax on
@@ -95,9 +100,14 @@ set backspace=indent,eol,start
 
 " Enable mouse
 set mouse=a
-if !has('nvim')
-    set ttymouse=xterm2
-endif
+" if !has('nvim')
+"     set ttymouse=xterm2
+" endif
+if has("mouse_sgr")
+	set ttymouse=sgr
+else
+	set ttymouse=xterm2
+end
 
 " Share clipboard with OS, it can destroy your normal yank, wtf!
 set clipboard=unnamed
@@ -129,9 +139,6 @@ command! -bang -nargs=* GGrep
   \   <bang>0)
 " ==========================
 
-" ======= Utilities =============
-" Search selected text
-vnoremap // y/\V<C-r>=escape(@",'/\')<CR><CR>
 " ==========================
 " " -- Visuals --
 let g:gruvbox_termcolors = 16
