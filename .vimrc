@@ -33,6 +33,11 @@ call plug#end()
 set updatetime=250  " Vim update time, defaults to 4000ms
 let g:gitgutter_override_sign_column_highlight = 1
 
+" Comfortable vim - scrolling
+let g:comfortable_motion_no_default_key_mappings = 1
+nnoremap <silent> <C-d> :call comfortable_motion#flick(80)<CR>
+nnoremap <silent> <C-u> :call comfortable_motion#flick(-80)<CR>
+
 " Ale
 let g:ale_set_highlights = 0  " Dont underline errors/warnings
 nmap <silent> <Leader>k <Plug>(ale_previous_wrap)
@@ -45,6 +50,16 @@ let g:ale_sign_warning = '•'
 hi link ALEErrorSign    GruvboxRed
 hi link ALEWarningSign  GruvboxYellow
 let g:ale_linters = {'python': ['flake8']}
+noremap <silent> gd :ALEGoToDefinition<CR>
+noremap <silent> gr :ALEFindReferences<CR>
+
+" Vim-tmux-navigator support for :term
+if has('terminal')
+	tmap <c-k> <c-w>:TmuxNavigateUp<cr>
+	tmap <c-j> <c-w>:TmuxNavigateDown<cr>
+	tmap <c-h> <c-w>:TmuxNavigateLeft<cr>
+	tmap <c-l> <c-w>:TmuxNavigateRight<cr>
+endif
 
 " Polyglot
 let g:python_highlight_space_errors = 0
@@ -144,6 +159,7 @@ command! -bang -nargs=* GGrep
 let g:gruvbox_termcolors = 16
 colorscheme gruvbox
 set background=dark
+set scrolloff=2
 hi Normal ctermbg=0
 hi StatusLine ctermbg=red ctermfg=black
 set laststatus=2
