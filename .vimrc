@@ -125,7 +125,7 @@ else
 end
 
 " Share clipboard with OS, it can destroy your normal yank, wtf!
-set clipboard=unnamed
+set clipboard=unnamedplus
 
 " ======= FZF =============
 nnoremap <C-b> :Buffers<CR>
