@@ -17,6 +17,7 @@ Plug 'https://github.com/tpope/vim-fugitive.git'
 Plug 'https://github.com/w0rp/ale.git'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'lervag/vimtex'
 Plug 'maralla/completor.vim'
 Plug 'morhetz/gruvbox'
 Plug 'scrooloose/nerdtree'
@@ -28,6 +29,8 @@ call plug#end()
 
 " ======================= Plug In Configs ===================================
 
+" So vimtex works
+let g:polyglot_disabled = ['latex']
 
 " Git Gutter
 set updatetime=250  " Vim update time, defaults to 4000ms
@@ -98,6 +101,12 @@ au FileType python setlocal
 	\ autoindent
 	\ fileformat=unix
 	\ foldmethod=indent
+
+au FileType tex setlocal
+	\ tabstop=2
+	\ softtabstop=2
+	\ shiftwidth=2
+	\ noexpandtab
 
 au BufNewFile,BufRead *.js,*.html,*.css
     \ set tabstop=2 |
