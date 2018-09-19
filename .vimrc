@@ -29,6 +29,23 @@ call plug#end()
 
 " ======================= Plug In Configs ===================================
 
+" NERDTree
+function! NERDTreeToggleInCurDir()
+    " If NERDTree is open in the current buffer
+    if (exists("t:NERDTreeBufName") && bufwinnr(t:NERDTreeBufName) != -1)
+        exe ":NERDTreeClose"
+    else
+        if (expand("%:t") != '')
+            exe ":NERDTreeFind"
+        else
+            exe ":NERDTreeToggle"
+        endif
+    endif
+endfunction
+
+map <C-n> :call NERDTreeToggleInCurDir()<CR>
+let NERDTreeMinimalUI=1
+
 " So vimtex works
 let g:polyglot_disabled = ['latex']
 
@@ -52,7 +69,7 @@ let g:ale_sign_error = '•'
 let g:ale_sign_warning = '•'
 hi link ALEErrorSign    GruvboxRed
 hi link ALEWarningSign  GruvboxYellow
-let g:ale_linters = {'python': ['flake8']}
+let g:ale_linters = {'python': ['pyls']}
 noremap <silent> gd :ALEGoToDefinition<CR>
 noremap <silent> gr :ALEFindReferences<CR>
 
@@ -135,6 +152,13 @@ end
 
 " Share clipboard with OS, it can destroy your normal yank, wtf!
 set clipboard=unnamedplus
+
+" This fixes problem with background being bright on lines with text and black
+" on lines without text, when using vim inside tmux, and with true color
+" Details: https://github.com/mhartington/oceanic-next/issues/40
+"          https://github.com/vim/vim/issues/804
+"           http://stackoverflow.com/questions/6427650/vim-in-tmux-background-color-changes-when-paging/15095377#15095377
+set t_ut=
 
 " ======= FZF =============
 nnoremap <C-b> :Buffers<CR>
