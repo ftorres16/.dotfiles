@@ -11,6 +11,7 @@ endif
 call plug#begin('~/.vim/plugged')
 Plug 'airblade/vim-gitgutter'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'davidhalter/jedi-vim'
 Plug 'https://github.com/elzr/vim-json'
 Plug 'https://github.com/noahfrederick/vim-noctu'
 Plug 'https://github.com/tpope/vim-fugitive.git'
@@ -69,7 +70,7 @@ let g:ale_sign_error = '•'
 let g:ale_sign_warning = '•'
 hi link ALEErrorSign    GruvboxRed
 hi link ALEWarningSign  GruvboxYellow
-let g:ale_linters = {'python': ['pyls']}
+let g:ale_linters = {'python': ['flake8']}
 noremap <silent> gd :ALEGoToDefinition<CR>
 noremap <silent> gr :ALEFindReferences<CR>
 
