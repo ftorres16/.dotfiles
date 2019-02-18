@@ -72,6 +72,7 @@ hi link ALEErrorSign    GruvboxRed
 hi link ALEWarningSign  GruvboxYellow
 "let g:ale_linters = {'python': ['pyls']}
 let g:ale_linters = {'python': ['flake8']}
+let g:ale_fixers = {'python': ['black']}
 noremap <silent> gd :ALEGoToDefinition<CR>
 noremap <silent> gr :ALEFindReferences<CR>
 
