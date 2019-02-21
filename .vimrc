@@ -12,6 +12,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'airblade/vim-gitgutter'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'davidhalter/jedi-vim'
+Plug 'gabrielelana/vim-markdown'
 Plug 'https://github.com/elzr/vim-json'
 Plug 'https://github.com/noahfrederick/vim-noctu'
 Plug 'https://github.com/tpope/vim-fugitive.git'
@@ -70,8 +71,8 @@ let g:ale_sign_error = '•'
 let g:ale_sign_warning = '•'
 hi link ALEErrorSign    GruvboxRed
 hi link ALEWarningSign  GruvboxYellow
-"let g:ale_linters = {'python': ['pyls']}
 let g:ale_linters = {'python': ['flake8']}
+let g:ale_fixers = {'python': ['black']}
 noremap <silent> gd :ALEGoToDefinition<CR>
 noremap <silent> gr :ALEFindReferences<CR>
 
@@ -153,7 +154,7 @@ else
 end
 
 " Share clipboard with OS, it can destroy your normal yank, wtf!
-set clipboard=unnamedplus
+set clipboard=unnamed
 
 " This fixes problem with background being bright on lines with text and black
 " on lines without text, when using vim inside tmux, and with true color
@@ -200,3 +201,7 @@ hi StatusLine ctermbg=red ctermfg=black
 set laststatus=2
 set noshowmode
 set statusline=%=%f%m\ %P\|%c\ %{ALEGetStatusLine()}
+
+"Remaps
+command Noh noh
+command NOh noh
