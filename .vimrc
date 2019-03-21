@@ -165,7 +165,7 @@ set t_ut=
 
 " ======= FZF =============
 nnoremap <C-b> :Buffers<CR>
-nnoremap <C-f> :GGrep <C-R><C-W><CR>
+nnoremap <C-f> :GGrep<CR>
 nnoremap <C-g>a :Ag<CR>
 nnoremap <C-g>c :Commands<CR>
 nnoremap <C-g>h :History:<CR>
