@@ -8,6 +8,11 @@ export LSCOLORS=GxFxCxDxBxegedabagaced
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
+# Expand size of bash history and dont save duplicate commands
+export HISTSIZE=20000
+export HISTFILESIZE=20000
+export HISTCONTROL=ignoredups:erasedups
+
 # Aliases
 alias ll='ls -alF'
 alias la='ls -A'
