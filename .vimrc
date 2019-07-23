@@ -72,7 +72,7 @@ let g:ale_sign_warning = '•'
 hi link ALEErrorSign    GruvboxRed
 hi link ALEWarningSign  GruvboxYellow
 let g:ale_linters = {'python': ['flake8']}
-let g:ale_fixers = {'python': ['black']}
+let g:ale_fixers = {'python': ['black'], 'go': ['gofmt']}
 noremap <silent> gd :ALEGoToDefinition<CR>
 noremap <silent> gr :ALEFindReferences<CR>
 
@@ -133,6 +133,11 @@ au BufNewFile,BufRead *.js,*.html,*.css
     \ set softtabstop=2 |
     \ set shiftwidth=2 |
 
+au FileType go setlocal
+	\ tabstop=4
+	\ softtabstop=4
+	\ shiftwidth=4
+	\ noexpandtab
 
 " " For ALE linter plugin
 highlight clear ALEErrorSign
