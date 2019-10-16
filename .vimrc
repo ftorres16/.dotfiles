@@ -14,7 +14,6 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'davidhalter/jedi-vim'
 Plug 'gabrielelana/vim-markdown'
 Plug 'https://github.com/elzr/vim-json'
-Plug 'https://github.com/noahfrederick/vim-noctu'
 Plug 'https://github.com/tpope/vim-fugitive.git'
 Plug 'https://github.com/w0rp/ale.git'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -64,15 +63,16 @@ nnoremap <silent> <C-u> :call comfortable_motion#flick(-80)<CR>
 let g:ale_set_highlights = 0  " Dont underline errors/warnings
 nmap <silent> <Leader>k <Plug>(ale_previous_wrap)
 nmap <silent> <Leader>j <Plug>(ale_next_wrap)
-let g:ale_lint_on_save = 0
-let g:ale_lint_on_text_changed = 1
+let g:ale_lint_on_save = 1
+let g:ale_lint_on_text_changed = 0
+let g:ale_fix_on_save = 1
 let g:ale_sign_column_always = 1
 let g:ale_sign_error = '•'
 let g:ale_sign_warning = '•'
 hi link ALEErrorSign    GruvboxRed
 hi link ALEWarningSign  GruvboxYellow
-let g:ale_linters = {'python': ['flake8']}
-let g:ale_fixers = {'python': ['black'], 'go': ['gofmt']}
+let g:ale_linters = {'python': ['flake8'], 'javascript': ['eslint']}
+let g:ale_fixers = {'python': ['black'], 'go': ['gofmt'], 'javascript': ['prettier', 'eslint']}
 noremap <silent> gd :ALEGoToDefinition<CR>
 noremap <silent> gr :ALEFindReferences<CR>
 
@@ -93,6 +93,7 @@ set diffopt+=vertical
 set background=dark
 set number
 set hlsearch
+set incsearch
 set nofoldenable
 "case insensitive search
 set ignorecase
@@ -128,16 +129,23 @@ au FileType tex setlocal
 	\ shiftwidth=2
 	\ noexpandtab
 
-au BufNewFile,BufRead *.js,*.html,*.css
-    \ set tabstop=2 |
-    \ set softtabstop=2 |
-    \ set shiftwidth=2 |
-
 au FileType go setlocal
 	\ tabstop=4
 	\ softtabstop=4
 	\ shiftwidth=4
 	\ noexpandtab
+
+au FileType javascript setlocal
+	\ tabstop=2
+	\ softtabstop=2
+	\ shiftwidth=2
+	\ expandtab
+	\ autoindent
+
+au BufNewFile,BufRead *.html *.css
+    \ set tabstop=2 |
+    \ set softtabstop=2 |
+    \ set shiftwidth=2 |
 
 " " For ALE linter plugin
 highlight clear ALEErrorSign
