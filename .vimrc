@@ -147,6 +147,8 @@ au BufNewFile,BufRead *.html *.css
     \ set softtabstop=2 |
     \ set shiftwidth=2 |
 
+au BufNewFile,BufRead *.tikz set filetype=tex
+
 " " For ALE linter plugin
 highlight clear ALEErrorSign
 highlight clear ALEWarningSign
