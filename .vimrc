@@ -123,11 +123,12 @@ au FileType python setlocal
 	\ fileformat=unix
 	\ foldmethod=indent
 
+au BufNewFile,BufRead *.tikz set filetype=tex
 au FileType tex setlocal
-	\ tabstop=2
-	\ softtabstop=2
-	\ shiftwidth=2
-	\ noexpandtab
+	\ tabstop=4
+	\ softtabstop=4
+	\ shiftwidth=4
+	\ expandtab
 
 au FileType go setlocal
 	\ tabstop=4
@@ -146,8 +147,6 @@ au BufNewFile,BufRead *.html *.css
     \ set tabstop=2 |
     \ set softtabstop=2 |
     \ set shiftwidth=2 |
-
-au BufNewFile,BufRead *.tikz set filetype=tex
 
 " " For ALE linter plugin
 highlight clear ALEErrorSign
