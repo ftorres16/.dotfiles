@@ -35,14 +35,6 @@ workon() {
     fi
 }
 
-# Making virtualenv alias
-mkvenv() {
-    cd ~/.virtualenvs
-    virtualenv "$@"
-    cd -
-    workon "$1"
-}
-
 # Automatic virtualenv sourcing
 function auto_pipenv_shell {
     if [ ! -n "$VIRTUAL_ENV" ]; then
