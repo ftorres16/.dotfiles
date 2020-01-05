@@ -21,6 +21,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'lervag/vimtex'
 Plug 'maralla/completor.vim'
 Plug 'morhetz/gruvbox'
+Plug 'osamuaoki/vim-spell-under'
 Plug 'scrooloose/nerdtree'
 Plug 'sheerun/vim-polyglot'
 Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -31,24 +32,14 @@ call plug#end()
 " ======================= Plug In Configs ===================================
 
 " NERDTree
-function! NERDTreeToggleInCurDir()
-    " If NERDTree is open in the current buffer
-    if (exists("t:NERDTreeBufName") && bufwinnr(t:NERDTreeBufName) != -1)
-        exe ":NERDTreeClose"
-    else
-        if (expand("%:t") != '')
-            exe ":NERDTreeFind"
-        else
-            exe ":NERDTreeToggle"
-        endif
-    endif
-endfunction
 
 map <C-n> :call NERDTreeToggleInCurDir()<CR>
 let NERDTreeMinimalUI=1
 
 " So vimtex works
 let g:polyglot_disabled = ['latex']
+let g:tex_flavor = 'latex'
+"let g:vimtex_quickfix_autoclose_after_keystrokes = 1
 
 " Git Gutter
 set updatetime=250  " Vim update time, defaults to 4000ms
@@ -71,8 +62,6 @@ let g:ale_sign_error = '•'
 let g:ale_sign_warning = '•'
 hi link ALEErrorSign    GruvboxRed
 hi link ALEWarningSign  GruvboxYellow
-let g:ale_linters = {'python': ['flake8'], 'javascript': ['eslint']}
-let g:ale_fixers = {'python': ['black'], 'go': ['gofmt'], 'javascript': ['prettier', 'eslint']}
 noremap <silent> gd :ALEGoToDefinition<CR>
 noremap <silent> gr :ALEFindReferences<CR>
 
@@ -101,52 +90,6 @@ set smartcase
 
 " Syntax
 syntax on
-
-au FileType c setlocal
-	\ tabstop=4
-	\ softtabstop=4
-	\ shiftwidth=4
-	\ noexpandtab
-
-au FileType verilog setlocal
-	\ tabstop=2
-	\ softtabstop=2
-	\ shiftwidth=2
-	\ noexpandtab
-
-au FileType python setlocal
-	\ tabstop=8
-	\ softtabstop=4
-	\ shiftwidth=4
-	\ expandtab
-	\ autoindent
-	\ fileformat=unix
-	\ foldmethod=indent
-
-au BufNewFile,BufRead *.tikz set filetype=tex
-au FileType tex setlocal
-	\ tabstop=4
-	\ softtabstop=4
-	\ shiftwidth=4
-	\ expandtab
-
-au FileType go setlocal
-	\ tabstop=4
-	\ softtabstop=4
-	\ shiftwidth=4
-	\ noexpandtab
-
-au FileType javascript setlocal
-	\ tabstop=2
-	\ softtabstop=2
-	\ shiftwidth=2
-	\ expandtab
-	\ autoindent
-
-au BufNewFile,BufRead *.html *.css
-    \ set tabstop=2 |
-    \ set softtabstop=2 |
-    \ set shiftwidth=2 |
 
 " " For ALE linter plugin
 highlight clear ALEErrorSign
@@ -207,7 +150,8 @@ command! -bang -nargs=* GGrep
 " ==========================
 " " -- Visuals --
 let g:gruvbox_termcolors = 16
-colorscheme gruvbox
+"colorscheme gruvbox
+let g:spell_under='gruvbox'
 set background=dark
 set scrolloff=2
 hi Normal ctermbg=0
