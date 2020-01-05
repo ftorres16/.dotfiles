@@ -44,6 +44,7 @@ let g:tex_flavor = 'latex'
 " Git Gutter
 set updatetime=250  " Vim update time, defaults to 4000ms
 let g:gitgutter_override_sign_column_highlight = 1
+set signcolumn=yes
 
 " Comfortable vim - scrolling
 let g:comfortable_motion_no_default_key_mappings = 1
