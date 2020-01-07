@@ -35,6 +35,7 @@ call plug#end()
 
 map <C-n> :call NERDTreeToggleInCurDir()<CR>
 let NERDTreeMinimalUI=1
+let NERDTreeShowHidden=1
 
 " So vimtex works
 let g:polyglot_disabled = ['latex']
