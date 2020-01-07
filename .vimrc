@@ -1,4 +1,3 @@
-
 filetype indent plugin on
 
 " automatic installation
@@ -32,7 +31,6 @@ call plug#end()
 " ======================= Plug In Configs ===================================
 
 " NERDTree
-
 map <C-n> :call NERDTreeToggleInCurDir()<CR>
 let NERDTreeMinimalUI=1
 let NERDTreeShowHidden=1
@@ -86,8 +84,7 @@ set number
 set hlsearch
 set incsearch
 set nofoldenable
-"case insensitive search
-set ignorecase
+set ignorecase "case insensitive search
 set smartcase
 
 " Syntax
