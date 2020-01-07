@@ -86,6 +86,7 @@ set incsearch
 set nofoldenable
 set ignorecase "case insensitive search
 set smartcase
+set wildmenu
 
 " Syntax
 syntax on
@@ -97,6 +98,9 @@ highlight clear SignColumn
 
 " Fix backspace
 set backspace=indent,eol,start
+
+" Save a file as sudo
+cnoremap w!! w !sudo tee > /dev/null %<CR>
 
 " Enable mouse
 set mouse=a
