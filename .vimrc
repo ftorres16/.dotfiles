@@ -10,7 +10,7 @@ endif
 call plug#begin('~/.vim/plugged')
 Plug 'airblade/vim-gitgutter'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'davidhalter/jedi-vim'
+" Plug 'davidhalter/jedi-vim'
 Plug 'gabrielelana/vim-markdown'
 Plug 'https://github.com/elzr/vim-json'
 Plug 'https://github.com/tpope/vim-fugitive.git'
@@ -148,6 +148,12 @@ command! -bang -nargs=* GGrep
   \   <bang>0 ? fzf#vim#with_preview({'options': '--no-hscroll --delimiter : --nth 3..'}, 'up:60%')
   \           : fzf#vim#with_preview({'options': '--no-hscroll --delimiter : --nth 3..'}, 'right:50%'),
   \   <bang>0)
+" ==========================
+
+" ======= completor ========
+noremap <silent> <leader>d :call completor#do('definition')<CR>
+noremap <silent> <leader>c :call completor#do('doc')<CR>
+noremap <silent> <leader>s :call completor#do('hover')<CR>
 " ==========================
 
 " ==========================
