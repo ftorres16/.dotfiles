@@ -1,4 +1,3 @@
-
 filetype indent plugin on
 
 " automatic installation
@@ -11,7 +10,7 @@ endif
 call plug#begin('~/.vim/plugged')
 Plug 'airblade/vim-gitgutter'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'davidhalter/jedi-vim'
+" Plug 'davidhalter/jedi-vim'
 Plug 'gabrielelana/vim-markdown'
 Plug 'https://github.com/elzr/vim-json'
 Plug 'https://github.com/tpope/vim-fugitive.git'
@@ -32,7 +31,6 @@ call plug#end()
 " ======================= Plug In Configs ===================================
 
 " NERDTree
-
 map <C-n> :call NERDTreeToggleInCurDir()<CR>
 let NERDTreeMinimalUI=1
 let NERDTreeShowHidden=1
@@ -86,9 +84,9 @@ set number
 set hlsearch
 set incsearch
 set nofoldenable
-"case insensitive search
-set ignorecase
+set ignorecase "case insensitive search
 set smartcase
+set wildmenu
 
 " Syntax
 syntax on
@@ -100,6 +98,9 @@ highlight clear SignColumn
 
 " Fix backspace
 set backspace=indent,eol,start
+
+" Save a file as sudo
+cnoremap w!! w !sudo tee > /dev/null %<CR>
 
 " Enable mouse
 set mouse=a
@@ -147,6 +148,12 @@ command! -bang -nargs=* GGrep
   \   <bang>0 ? fzf#vim#with_preview({'options': '--no-hscroll --delimiter : --nth 3..'}, 'up:60%')
   \           : fzf#vim#with_preview({'options': '--no-hscroll --delimiter : --nth 3..'}, 'right:50%'),
   \   <bang>0)
+" ==========================
+
+" ======= completor ========
+noremap <silent> <leader>d :call completor#do('definition')<CR>
+noremap <silent> <leader>c :call completor#do('doc')<CR>
+noremap <silent> <leader>s :call completor#do('hover')<CR>
 " ==========================
 
 " ==========================
