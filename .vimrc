@@ -90,6 +90,10 @@ set wildmenu
 
 " Syntax
 syntax on
+if &listchars ==# 'eol:$'
+  set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
+endif
+set list
 
 " " For ALE linter plugin
 highlight clear ALEErrorSign
