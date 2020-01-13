@@ -14,7 +14,7 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'gabrielelana/vim-markdown'
 Plug 'https://github.com/elzr/vim-json'
 Plug 'https://github.com/tpope/vim-fugitive.git'
-Plug 'https://github.com/w0rp/ale.git'
+Plug 'dense-analysis/ale'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'lervag/vimtex'
