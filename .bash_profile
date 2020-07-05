@@ -24,31 +24,6 @@ parse_git_branch() {
 }
 export -n PS1="\[\033[01;32m\]\u@\h\[\033[00m\]: \[\033[01;34m\]\w\[\033[01;33m\]\$(parse_git_branch)\[\033[00m\] $ "
 
-# Activate current folder's pipenv virtualenv
-# or accept an explicit virtualenv name
-workon() {
-    if [ $# -eq 0 ]
-    then
-        source "$(pipenv --venv)/bin/activate"
-    else
-        source "~/.virtualenvs/$1/bin/activate"
-    fi
-}
-
-# Automatic virtualenv sourcing
-function auto_pipenv_shell {
-    if [ ! -n "$VIRTUAL_ENV" ]; then
-        if [ -f "Pipfile" ] ; then
-            workon
-        fi
-    fi
-}
-function cd {
-    builtin cd "$@"
-    auto_pipenv_shell
-}
-auto_pipenv_shell
-
 alias glNoGraph='git log --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr% C(auto)%an" "$@"'
 _gitLogLineToHash="echo {} | grep -o '[a-f0-9]\{7\}' | head -1"
 _viewGitLogLine="$_gitLogLineToHash | xargs -I % sh -c 'git show --color=always %'"
