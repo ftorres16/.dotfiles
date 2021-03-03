@@ -7,6 +7,8 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
+let g:polyglot_disabled = ['latex', 'v']
+
 call plug#begin('~/.vim/plugged')
 Plug 'airblade/vim-gitgutter'
 Plug 'christoomey/vim-tmux-navigator'
@@ -36,7 +38,6 @@ let NERDTreeMinimalUI=1
 let NERDTreeShowHidden=1
 
 " So vimtex works
-let g:polyglot_disabled = ['latex']
 let g:tex_flavor = 'latex'
 "let g:vimtex_quickfix_autoclose_after_keystrokes = 1
 
