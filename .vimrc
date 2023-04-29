@@ -13,10 +13,10 @@ call plug#begin('~/.vim/plugged')
 Plug 'airblade/vim-gitgutter'
 Plug 'christoomey/vim-tmux-navigator'
 " Plug 'davidhalter/jedi-vim'
-Plug 'gabrielelana/vim-markdown'
-Plug 'https://github.com/elzr/vim-json'
-Plug 'https://github.com/tpope/vim-fugitive.git'
 Plug 'dense-analysis/ale'
+Plug 'gabrielelana/vim-markdown'
+Plug 'honza/vim-snippets'
+Plug 'https://github.com/tpope/vim-fugitive.git'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'lervag/vimtex'
@@ -25,6 +25,7 @@ Plug 'morhetz/gruvbox'
 Plug 'osamuaoki/vim-spell-under'
 Plug 'scrooloose/nerdtree'
 Plug 'sheerun/vim-polyglot'
+Plug 'SirVer/ultisnips'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'yuttie/comfortable-motion.vim'
 call plug#end()
@@ -40,6 +41,8 @@ let NERDTreeShowHidden=1
 " So vimtex works
 let g:tex_flavor = 'latex'
 "let g:vimtex_quickfix_autoclose_after_keystrokes = 1
+set conceallevel=1
+let g:tex_conceal='abdmg'
 
 " Git Gutter
 set updatetime=250  " Vim update time, defaults to 4000ms
@@ -160,6 +163,13 @@ noremap <silent> <leader>d :call completor#do('definition')<CR>
 noremap <silent> <leader>c :call completor#do('doc')<CR>
 noremap <silent> <leader>s :call completor#do('hover')<CR>
 " ==========================
+
+" ======= ultisnips ========
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+" ==========================
+
 
 " ==========================
 " " -- Visuals --
